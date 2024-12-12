@@ -10,31 +10,59 @@ export interface AnatomyImage {
 
 export const anatomyImages: AnatomyImage[] = [
   {
-    id: 'skull-lateral',
-    src: '/images/cranium_image-049.jpg',
-    alt: 'Lateral view of skull with temporalis muscle',
-    description: 'Shows the temporalis muscle attachment and skull structure from the side view',
+    id: 'frontal',
+    src: '/images/neurocranium/frontal.png',
+    alt: 'Frontal bone anatomy',
+    description: 'Forms the forehead and anterior portion of the cranial roof',
     section: 'neurocranium'
   },
   {
-    id: 'facial-muscles',
-    src: '/images/cranium_image-091.jpg',
-    alt: 'Anterior view of facial muscles',
-    description: 'Detailed view of facial muscles including orbicularis oculi and oris',
+    id: 'parietal',
+    src: '/images/neurocranium/parietal.png',
+    alt: 'Parietal bone anatomy',
+    description: 'Forms the superior and lateral walls of the cranium',
+    section: 'neurocranium'
+  },
+  {
+    id: 'temporal',
+    src: '/images/neurocranium/temporal.png',
+    alt: 'Temporal bone anatomy',
+    description: 'Houses the organs of hearing and contains the styloid process',
+    section: 'neurocranium'
+  },
+  {
+    id: 'sphenoid',
+    src: '/images/neurocranium/sphenoid.png',
+    alt: 'Sphenoid bone anatomy',
+    description: 'Forms part of the anterior cranial fossa and contains the sella turcica',
+    section: 'neurocranium'
+  },
+  {
+    id: 'ethmoid',
+    src: '/images/neurocranium/ethmoid.png',
+    alt: 'Ethmoid bone anatomy',
+    description: 'Located between the orbital cavities, forms part of the nasal cavity roof',
+    section: 'neurocranium'
+  },
+  {
+    id: 'occipital',
+    src: '/images/neurocranium/occipital.png',
+    alt: 'Occipital bone anatomy',
+    description: 'Forms the posterior and inferior portions of the cranium',
+    section: 'neurocranium'
+  },
+  {
+    id: 'viscerocranium-overview',
+    src: '/images/viscerocranium/overview.png',
+    alt: 'Overview of viscerocranium bones',
+    description: 'Complete overview of the facial bones and their relationships',
     section: 'viscerocranium'
   },
   {
-    id: 'skull-base',
-    src: '/images/cranium_image-035.jpg',
-    alt: 'Inferior view of skull base',
-    description: 'Shows the skull base structure and important foramina',
-    section: 'neurocranium'
-  },
-  {
-    id: 'skull-sutures',
-    src: '/images/cranium_image-054.jpg',
-    alt: 'Lateral view showing cranial sutures',
-    description: 'Demonstrates the coronal, sagittal, lambdoid, and squamous sutures',
+    id: 'sutures-overview',
+    src: '/images/sutures/overview.png',
+    alt: 'Overview of cranial sutures',
+    description: 'Shows the major sutures connecting the cranial bones',
     section: 'sutures'
   }
 ];
