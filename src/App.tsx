@@ -3,15 +3,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./com
 import { Button } from "./components/ui/button"
 import { Brain, Skull, Microscope } from 'lucide-react'
 import { NeurocraniumGame } from './components/NeurocraniumGame'
+import { LearningMode } from './components/LearningMode'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs"
 
 interface GameState {
   currentSection: 'menu' | 'neurocranium' | 'sutures' | 'viscerocranium';
+  mode: 'learn' | 'quiz';
   score: number;
 }
 
 function App() {
   const [gameState, setGameState] = useState<GameState>({
     currentSection: 'menu',
+    mode: 'learn',
     score: 0
   });
 
@@ -72,25 +76,37 @@ function App() {
         {gameState.currentSection !== 'menu' && (
           <Card className="p-6">
             <CardHeader>
-              <CardTitle>{sections.find(s => s.id === gameState.currentSection)?.title}</CardTitle>
-              <Button
-                variant="outline"
-                onClick={() => setGameState(prev => ({ ...prev, currentSection: 'menu' }))}
-                className="mt-4"
-              >
-                Back to Menu
-              </Button>
+              <div className="flex justify-between items-center">
+                <CardTitle>{sections.find(s => s.id === gameState.currentSection)?.title}</CardTitle>
+                <Button
+                  variant="outline"
+                  onClick={() => setGameState(prev => ({ ...prev, currentSection: 'menu' }))}
+                >
+                  Back to Menu
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
-              {gameState.currentSection === 'neurocranium' && (
-                <NeurocraniumGame onScoreUpdate={handleScoreUpdate} />
-              )}
-              {gameState.currentSection === 'sutures' && (
-                <p>Content for Sutures will be added in the next iteration.</p>
-              )}
-              {gameState.currentSection === 'viscerocranium' && (
-                <p>Content for Viscerocranium will be added in the next iteration.</p>
-              )}
+              <Tabs defaultValue="learn" onValueChange={(value) => setGameState(prev => ({ ...prev, mode: value as 'learn' | 'quiz' }))}>
+                <TabsList className="grid w-full grid-cols-2 mb-6">
+                  <TabsTrigger value="learn">Study Mode</TabsTrigger>
+                  <TabsTrigger value="quiz">Quiz Mode</TabsTrigger>
+                </TabsList>
+                <TabsContent value="learn">
+                  <LearningMode />
+                </TabsContent>
+                <TabsContent value="quiz">
+                  {gameState.currentSection === 'neurocranium' && (
+                    <NeurocraniumGame onScoreUpdate={handleScoreUpdate} />
+                  )}
+                  {gameState.currentSection === 'sutures' && (
+                    <p>Quiz content for Sutures will be added in the next iteration.</p>
+                  )}
+                  {gameState.currentSection === 'viscerocranium' && (
+                    <p>Quiz content for Viscerocranium will be added in the next iteration.</p>
+                  )}
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         )}
