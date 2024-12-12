@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { AnatomyImageComponent, anatomyImages } from './ImageAssets';
+import { AnatomyImageComponent } from './ImageAssets';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface AnatomySection {
