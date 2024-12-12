@@ -3,7 +3,12 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-  base: '',  // Changed from './' to '' for static deployment
+  base: '',
+  publicDir: 'public',
+  build: {
+    assetsDir: 'assets',
+    copyPublicDir: true,
+  },
   plugins: [react()],
   resolve: {
     alias: {
