@@ -15,9 +15,12 @@ export default defineConfig({
           const info = assetInfo.name.split('.')
           const ext = info[info.length - 1]
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
-            const pathParts = assetInfo.name.split('/')
-            const section = pathParts[pathParts.length - 2] || ''
-            return `assets/images/${section}/[name][extname]`
+            const fullPath = assetInfo.name
+            if (fullPath.includes('images_organized')) {
+              const pathAfterOrganized = fullPath.split('images_organized/')[1]
+              return `assets/images/${pathAfterOrganized}`
+            }
+            return `assets/images/[name][extname]`
           }
           return 'assets/[name]-[hash][extname]'
         }
