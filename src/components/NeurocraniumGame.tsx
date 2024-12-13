@@ -25,7 +25,7 @@ const bones: Bone[] = [
   },
   {
     id: 'parietal',
-    name: 'Parietal Bone (×2)',
+    name: 'Parietal Bone',
     description: 'Forms the superior and lateral walls of the cranium. Features temporal lines for muscle attachment.',
     imageId: 'parietal',
     funFact: 'The parietal bones are like the roof of your skull house, protecting the parts of your brain that process touch and spatial awareness!',
@@ -41,7 +41,7 @@ const bones: Bone[] = [
   },
   {
     id: 'temporal',
-    name: 'Temporal Bone (×2)',
+    name: 'Temporal Bone',
     description: 'Houses the organs of hearing and contains the styloid process',
     imageId: 'temporal',
     funFact: 'Your temporal bones are like your skull\'s headphone jacks - they contain your inner ear structures!',
@@ -90,7 +90,7 @@ export const NeurocraniumGame: React.FC<NeurocraniumGameProps> = ({ onScoreUpdat
       question: 'These paired bones form the roof and sides of the cranium, featuring temporal lines for muscle attachment. They protect important parts of the brain involved in spatial awareness. Identify these bones:',
       imageId: 'parietal',
       options: bones.map(b => b.name),
-      correctAnswer: 'Parietal Bone (×2)',
+      correctAnswer: 'Parietal Bone',
       explanation: 'The parietal bones protect the parietal lobes and feature temporal lines where muscles attach. They join with the frontal bone at the coronal suture and with each other at the sagittal suture.'
     },
     {
@@ -98,7 +98,7 @@ export const NeurocraniumGame: React.FC<NeurocraniumGameProps> = ({ onScoreUpdat
       question: 'This bone houses the organs of hearing and balance, contains the external acoustic meatus, and forms an important joint with the mandible. Which bone is this?',
       imageId: 'temporal',
       options: bones.map(b => b.name),
-      correctAnswer: 'Temporal Bone (×2)',
+      correctAnswer: 'Temporal Bone',
       explanation: 'The temporal bone contains the external acoustic meatus for hearing, the mastoid process for muscle attachment, and forms the temporomandibular joint (TMJ) with the mandible. It\'s crucial for hearing, balance, and jaw movement.'
     },
     {
