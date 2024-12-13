@@ -36,11 +36,14 @@ const loadAnatomicalImages = async (): Promise<AnatomicalImage[]> => {
     }
   };
 
-  // Load images from each category
-  for (const category of ['neurocranium', 'viscerocranium', 'sutures'] as const) {
-    const imageContext = import.meta.glob(`/public/images_organized/${category}/*.png`);
+  // Use static glob patterns for each category
+  const neurocraniumImages = import.meta.glob('/public/images_organized/neurocranium/*.png', { eager: true });
+  const viscerocraniumImages = import.meta.glob('/public/images_organized/viscerocranium/*.png', { eager: true });
+  const suturesImages = import.meta.glob('/public/images_organized/sutures/*.png', { eager: true });
 
-    for (const path in imageContext) {
+  // Helper function to process images for a category
+  const processImages = (imageModules: Record<string, any>, category: 'neurocranium' | 'viscerocranium' | 'sutures') => {
+    Object.entries(imageModules).forEach(([path, _]) => {
       const filename = path.split('/').pop()?.replace('.png', '') || '';
       const pageRef = getPageRef(filename);
 
@@ -52,8 +55,13 @@ const loadAnatomicalImages = async (): Promise<AnatomicalImage[]> => {
         category,
         pageRef
       });
-    }
-  }
+    });
+  };
+
+  // Process images for each category
+  processImages(neurocraniumImages, 'neurocranium');
+  processImages(viscerocraniumImages, 'viscerocranium');
+  processImages(suturesImages, 'sutures');
 
   return images;
 };
